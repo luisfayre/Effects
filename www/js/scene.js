@@ -13,11 +13,11 @@
 	function initializeScene() {
 		webGLAvaible = false;
 		
-			renderer = new THREE.WebGLRenderer({antialias: true});
-			webGLAvaible = true;
+		renderer = new THREE.WebGLRenderer({antialias: true});
+		webGLAvaible = true;
 		
-			renderer = new THREE.CanvasRenderer();
-			renderer.setClearColorHex(0x000000, 1);
+		renderer = new THREE.CanvasRenderer();
+		renderer.setClearColorHex(0x000000, 1);
 	
 		canvasWidth = window.innerWidth - 10;
 		canvasHeigth = window.innerHeigth - 20;
@@ -47,9 +47,9 @@
 				new THREE.UV(1,0,0.0),
 				new THREE.UV(0,0,1.0),
 				new THREE.UV(0,0,1.0)
-				]);
+			]);
 
-			var squareMaterial = new THREE.MeshBasicMateria({
+			var squareMaterial = new THREE.MeshBasicMaterial({
 				map: startTexture,
 				transparent: true,
 				combine: THREE.MixOperation,
@@ -58,7 +58,7 @@
 			});
 
 			var squareMesh = THREE.Mesh(squareGeometry, squareMaterial);
-			squareMesh.position.set(0.0,0.0,0.0);
+			//squareMesh.position.set(0.0,0.0,0.0);
 
 			scene.add(squareMesh);
 
@@ -85,7 +85,6 @@
 						star[i].r = Math.random();
 						star[i].g = Math.random();
 						star[i].b = Math.random();
-						
 					}
 				}
 				star[i].mesh.matrix.setPosition(new THREE.Vector3(star[i].dist,0,0));
@@ -97,9 +96,8 @@
 			}
 			rendererScene();
 		}
-
 		function rendererScene(){
-			animeteScene();
+			renderer.render(scene, camera)
 		}
 	}
 
